@@ -1,0 +1,24 @@
+sudo: false
+dist: trusty
+language: node_js
+node_js: lts/*
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+addons:
+  firefox: latest
+  chrome: stable
+
+branches:
+  only:
+   - master
+
+install:
+  - yarn
+
+script:
+  - yarn lint
+  - yarn test

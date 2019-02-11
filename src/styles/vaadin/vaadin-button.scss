@@ -1,0 +1,23 @@
+
+// Here we can modify and add styles for vaadin button
+:host([theme~="your-custom-overwrite"]) {
+  [part="label"] {
+    font-weight: 300;
+    padding-left: 5px;
+    padding-right: 10px;
+
+    &::after {
+      border-style: solid;
+      border-width: 0.15em 0.15em 0 0;
+      content: '';
+      display: inline-block;
+      height: 0.40em;
+      left: 0.45em;
+      position: relative;
+      vertical-align: top;
+      width: 0.40em;
+      top: 0.38em;
+      transform: rotate(45deg);
+    }
+  }
+}

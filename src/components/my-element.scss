@@ -1,0 +1,14 @@
+.button-container {
+  margin-top: 200px;
+  text-align: center;
+
+  vaadin-button {
+    box-shadow: 10px 10px 10px #eee;
+
+    // Cannot modify Shadow DOM. See /src/styles/vaadin/vaadin-button.scss
+    &[part="label"] {
+      padding: 100px;
+      display: none;
+    }
+  }
+}

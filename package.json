@@ -1,0 +1,96 @@
+{
+  "name": "lit-scss-vaadin",
+  "private": false,
+  "version": "0.1.0",
+  "description": "Using LitElement with SCSS and Vaadin components",
+  "author": "Janar Palk",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Vaadin",
+    "web-components",
+    "web-component",
+    "polymer",
+    "scss",
+    "lit-element",
+    "LitElement"
+  ],
+  "scripts": {
+    "argos": "argos upload test/regressions/screenshots/chrome --token $ARGOS_TOKEN || true",
+    "clean": "del-cli packages/*/node_modules packages/*/package-lock.json",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:css": "stylelint packages/**/*-styles.js",
+    "lint:js": "eslint *.js packages",
+    "dev": "webpack-serve --open",
+    "test": "karma start",
+    "test:regressions": "BABEL_ENV=regressions webpack --config test/regressions/webpack.config.js && del-cli test/regressions/screenshots/chrome/* && vrtest run --config test/vrtest.config.js --record"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/runtime": "^7.3.1",
+    "@vaadin/vaadin-core": "^12.0.5",
+    "@webcomponents/webcomponentsjs": "^2.2.4",
+    "argos-cli": "^0.0.9",
+    "babel-eslint": "^10.0.0",
+    "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "del-cli": "^1.1.0",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.15.0",
+    "html-webpack-plugin": "^4.0.0-beta.5",
+    "husky": "^1.3.1",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "karma": "^4.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^2.0.4",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-sinon-chai": "^2.0.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^4.0.0-rc.5",
+    "lerna": "^3.10.7",
+    "lint-staged": "^8.1.1",
+    "lit-html": "^1.0.0-rc.2",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.16.1",
+    "raw-loader": "^1.0.0",
+    "sass-loader": "^7.1.0",
+    "sinon": "^7.2.3",
+    "sinon-chai": "^3.3.0",
+    "stylelint": "^9.10.1",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-processor-styled-components": "^1.5.2",
+    "vrtest": "^0.2.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.1",
+    "webpack-serve": "^2.0.3"
+  },
+  "dependencies": {
+    "@vaadin/vaadin-button": "^2.1.3",
+    "lit-element": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*-styles.js": [
+      "stylelint"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
